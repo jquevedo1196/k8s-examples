@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="id01"></div>
+
+    <script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://backend-k8s-hands-on";
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var resp = JSON.parse(this.responseText);
+            document.getElementById("id01").innerHTML = "<h2> la hora es: " + resp.time + " El host es: " + resp.hostname + "</h2>";
+            console.log("hora es: " + resp.time)
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    </script>
+    
+</body>
+</html>
