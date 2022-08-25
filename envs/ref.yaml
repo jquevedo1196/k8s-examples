@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envs-demo
+spec:
+  containers:
+  - name: envs-demo-container
+    image: nginx:alpine
+    env:
+      - name: "Var1"
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
